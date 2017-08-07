@@ -6,7 +6,8 @@ AM_CPPFLAGS = 								\
 	-DG_LOG_DOMAIN=\"exo\"						\
 	-DHELPERDIR=\"$(HELPER_PATH_PREFIX)/xfce4/exo-$(LIBEXO_VERSION_API)\"	\
 	-DLIBEXO_VERSION_API=\"$(LIBEXO_VERSION_API)\"			\
-	-DPACKAGE_LOCALE_DIR=\"$(localedir)\"
+	-DPACKAGE_LOCALE_DIR=\"$(localedir)\" \
+	-Wno-expansion-to-defined
 
 lib_LTLIBRARIES = libexo-1.la
 
@@ -262,6 +263,80 @@ exo-marshal.c: exo-marshal.list Makefile
 	&& cp xgen-emc exo-marshal.c \
 	&& rm -f xgen-emc
 endif
+# endif MAINTAINER_MODE
+
+# GObject Introspection
+include $(INTROSPECTION_MAKEFILE)
+INTROSPECTION_GIRS =
+INTROSPECTION_SCANNER_ENV = CC="$(CC)"
+INTROSPECTION_SCANNER_ARGS = \
+	--add-include-path=$(srcdir) \
+	--add-include-path=$(prefix)/share/gir-1.0 \
+	--warn-all
+INTROSPECTION_COMPILER_ARGS = \
+	--includedir=$(srcdir) \
+	--includedir=$(prefix)/share/gir-1.0 \
+	--includedir=.
+
+if HAVE_INTROSPECTION
+introspection_sources = ""
+
+# Maybe remove exo-utils.h
+exo_2_gir_sources = \
+	exo.h \
+	exo-binding.h \
+	exo-config.h \
+	exo-execute.h \
+	exo-gtk-extensions.h \
+	exo-gobject-extensions.h \
+	exo-gdk-pixbuf-extensions.h \
+	exo-job.h \
+	exo-simple-job.h \
+	exo-icon-chooser-dialog.h \
+	exo-enum-types.h \
+	exo-cell-renderer-icon.h \
+	exo-thumbnail.h \
+	exo-tree-view.h \
+	exo-binding.c \
+	exo-marshal.c \
+	exo-marshal.h \
+	exo-utils.h \
+	exo-string.h \
+	exo-config.c \
+	exo-execute.c \
+	exo-gdk-pixbuf-extensions.c \
+	exo-gtk-extensions.c \
+	exo-gobject-extensions.c \
+	exo-job.c \
+	exo-simple-job.c \
+	exo-string.c \
+	exo-utils.c \
+	exo-icon-chooser-dialog.c \
+	exo-enum-types.c \
+	exo-cell-renderer-icon.c \
+	exo-thumbnail.c \
+	exo-tree-view.c
+
+exo-2.gir: libexo-2.la Makefile
+exo_2_gir_INCLUDES = GObject-2.0 GLib-2.0 Gtk-3.0 libxfce4util-1.0
+exo_2_gir_CFLAGS = $(AM_CPPFLAGS)
+exo_2_gir_LIBS = libexo-2.la
+exo_2_gir_FILES = $(exo_2_gir_sources)
+exo_2_gir_EXPORT_PACKAGES = exo-2
+exo_2_gir_SCANNERFLAGS = \
+	--identifier-prefix=Exo --symbol-prefix=exo \
+	--c-include="exo/exo.h"
+INTROSPECTION_GIRS += exo-2.gir
+
+girdir = $(datadir)/gir-1.0
+gir_DATA = $(INTROSPECTION_GIRS)
+
+typelibdir = $(libdir)/girepository-1.0
+typelib_DATA = $(INTROSPECTION_GIRS:.gir=.typelib)
+
+DISTCLEANFILES = $(gir_DATA) $(typelib_DATA)
+endif
+# endif HAVE_INTROSPECTION
 
 
 # required for gtk-doc

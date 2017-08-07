@@ -38,6 +38,9 @@ exo/exo-marshal.c
 exo/exo-marshal.h
 exo/stamp-exo-enum-types.h
 exo/stamp-exo-marshal.h
+exo/exo-2.gir
+exo/exo-2.typelib
+exo/g-ir-cpp*
 exo-csource/exo-csource
 exo-desktop-item-edit/exo-desktop-item-edit
 exo-helper/exo-helper-1

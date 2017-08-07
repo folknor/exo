@@ -183,6 +183,11 @@ dnl *** Check for gtk-doc ***
 dnl *************************
 GTK_DOC_CHECK([1.9])
 
+dnl ***************************************
+dnl *** Check for gobject-introspection ***
+dnl ***************************************
+GOBJECT_INTROSPECTION_CHECK([1.30.0])
+
 dnl ***********************************
 dnl *** Check for debugging support ***
 dnl ***********************************
