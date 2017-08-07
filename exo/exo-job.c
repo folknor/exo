@@ -453,7 +453,7 @@ exo_job_finished (ExoJob *job)
  * or after this call in order to be notified on errors, progress updates
  * and the end of the operation.
  *
- * Returns: the @job itself.
+ * Returns: (transfer full): the @job itself.
  **/
 ExoJob *
 exo_job_launch (ExoJob *job)
@@ -532,7 +532,7 @@ exo_job_is_cancelled (const ExoJob *job)
  *
  * Returns the #GCancellable that can be used to cancel the @job.
  *
- * Returns: the #GCancellable associated with the @job. It
+ * Returns: (transfer none): the #GCancellable associated with the @job. It
  *          is owned by the @job and must not be released.
  **/
 GCancellable *

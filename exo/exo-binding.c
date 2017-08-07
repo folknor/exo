@@ -290,7 +290,7 @@ exo_binding_link_init (ExoBindingLink     *blink,
 
 
 /**
- * exo_binding_new:
+ * exo_binding_new: (skip):
  * @src_object:   The source #GObject.
  * @src_property: The name of the property to bind from.
  * @dst_object:   The destination #GObject.
@@ -319,7 +319,7 @@ exo_binding_new (GObject      *src_object,
 
 
 /**
- * exo_binding_new_full:
+ * exo_binding_new_full: (skip):
  * @src_object:     The source #GObject.
  * @src_property:   The name of the property to bind from.
  * @dst_object:     The destination #GObject.
@@ -387,7 +387,7 @@ exo_binding_new_full (GObject            *src_object,
 
 
 /**
- * exo_binding_new_with_negation:
+ * exo_binding_new_with_negation: (skip):
  * @src_object:   The source #GObject.
  * @src_property: The name of the property to bind from.
  * @dst_object:   The destination #GObject.
@@ -432,7 +432,7 @@ exo_binding_unbind (ExoBinding *binding)
 
 
 /**
- * exo_mutual_binding_new:
+ * exo_mutual_binding_new: (skip):
  * @object1:   The first #GObject.
  * @property1: The first property to bind.
  * @object2:   The second #GObject.
@@ -460,7 +460,7 @@ exo_mutual_binding_new (GObject     *object1,
 
 
 /**
- * exo_mutual_binding_new_full:
+ * exo_mutual_binding_new_full: (skip):
  * @object1:           The first #GObject.
  * @property1:         The first property to bind.
  * @object2:           The second #GObject.
@@ -550,7 +550,7 @@ exo_mutual_binding_new_full (GObject            *object1,
 
 
 /**
- * exo_mutual_binding_new_with_negation:
+ * exo_mutual_binding_new_with_negation: (skip):
  * @object1:   The first #GObject.
  * @property1: The first property to bind.
  * @object2:   The second #GObject.

@@ -265,7 +265,7 @@ exo_gtk_url_about_dialog_hook (GtkAboutDialog *about_dialog,
  * Returns the action area of a #GtkDialog. The internal function has been
  * deprecated in GTK+, so this wraps and dispels the deprecation warning.
  *
- * Returns: the action area.
+ * Returns: (transfer full): the action area.
  *
  * Since: 0.11.4
  **/

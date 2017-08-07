@@ -162,7 +162,7 @@ exo_simple_job_execute (ExoJob  *job,
 
 /**
  * exo_simple_job_launch:
- * @func           : the #ExoSimpleJobFunc to execute the job.
+ * @func           : (scope call): the #ExoSimpleJobFunc to execute the job.
  * @n_param_values : the number of parameters to pass to the @func.
  * @...            : a list of #GType and parameter pairs (exactly
  *                   @n_param_values pairs) that are passed to @func.
@@ -239,7 +239,7 @@ exo_simple_job_execute (ExoJob  *job,
  * The caller is responsible to release the returned #ExoJob object
  * using g_object_unref() when no longer needed.
  *
- * Returns: the launched #ExoJob.
+ * Returns: (transfer full): the launched #ExoJob.
  **/
 ExoJob*
 exo_simple_job_launch (ExoSimpleJobFunc func,

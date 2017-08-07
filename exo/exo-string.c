@@ -373,7 +373,7 @@ exo_strdup_strftime (const gchar     *format,
  * of @strv. If called on a %NULL value or @num is 0, exo_strndupv()
  * simply returns %NULL.
  *
- * Returns: A new NULL-terminated array of strings or %NULL.
+ * Returns: (transfer full) (array zero-terminated=1): A new NULL-terminated array of strings or %NULL.
  *          Should be freed using g_strfreev() when no longer needed.
  **/
 gchar**

@@ -96,7 +96,7 @@
  * The caller is responsible to free the returned object
  * using g_object_unref() when no longer needed.
  *
- * Returns: the colorized #GdkPixbuf.
+ * Returns: (transfer full): the colorized #GdkPixbuf.
  *
  * Since: 0.3.1.3
  **/
@@ -266,7 +266,7 @@ draw_frame_column (const GdkPixbuf *frame_image,
  *
  * The caller is responsible to free the returned #GdkPixbuf using g_object_unref().
  *
- * Returns: the framed version of @source.
+ * Returns: (transfer full): the framed version of @source.
  *
  * Since: 0.3.1.9
  **/
@@ -343,7 +343,7 @@ exo_gdk_pixbuf_frame (const GdkPixbuf *source,
  * The caller is responsible to free the returned object
  * using g_object_unref() when no longer needed.
  *
- * Returns: a translucent version of @source.
+ * Returns: (transfer full): a translucent version of @source.
  *
  * Since: 0.3.1.3
  **/
@@ -446,7 +446,7 @@ lighten_channel (guchar cur_value)
  * The caller is responsible to free the returned
  * pixbuf using #g_object_unref().
  *
- * Returns: the lightened version of @source.
+ * Returns: (transfer full): the lightened version of @source.
  *
  * Since: 0.3.1.3
  **/
@@ -572,7 +572,7 @@ exo_gdk_pixbuf_spotlight (const GdkPixbuf *source)
  * The caller is responsible to free the returned #GdkPixbuf
  * using g_object_unref() when no longer needed.
  *
- * Returns: the resulting #GdkPixbuf.
+ * Returns: (transfer full): the resulting #GdkPixbuf.
  *
  * Since: 0.3.1.1
  **/
@@ -624,7 +624,7 @@ exo_gdk_pixbuf_scale_down (GdkPixbuf *source,
  * Scales @source to @dest_size while preserving the aspect ratio of
  * @source.
  *
- * Returns: A newly created #GdkPixbuf.
+ * Returns: (transfer full): A newly created #GdkPixbuf.
  **/
 GdkPixbuf*
 exo_gdk_pixbuf_scale_ratio (GdkPixbuf *source,
@@ -742,7 +742,7 @@ size_prepared (GdkPixbufLoader  *loader,
  * gdk_pixbuf_new_from_file_at_scale() is that images will never be
  * scaled up, whichwould otherwise result in ugly images.
  *
- * Returns: a newly created #GdkPixbuf with a reference count or 1, or
+ * Returns: (transfer full): a newly created #GdkPixbuf with a reference count or 1, or
  *          %NULL if any of several error conditions occurred: the file
  *          could not be opened, there was no loader for the file's format,
  *          there was not enough memory to allocate the buffer for the

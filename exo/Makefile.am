@@ -287,9 +287,9 @@ exo_2_gir_sources = \
 	exo-binding.h \
 	exo-config.h \
 	exo-execute.h \
-	exo-gtk-extensions.h \
-	exo-gobject-extensions.h \
 	exo-gdk-pixbuf-extensions.h \
+	exo-gobject-extensions.h \
+	exo-gtk-extensions.h \
 	exo-job.h \
 	exo-simple-job.h \
 	exo-icon-chooser-dialog.h \
@@ -300,13 +300,12 @@ exo_2_gir_sources = \
 	exo-binding.c \
 	exo-marshal.c \
 	exo-marshal.h \
-	exo-utils.h \
 	exo-string.h \
 	exo-config.c \
 	exo-execute.c \
 	exo-gdk-pixbuf-extensions.c \
-	exo-gtk-extensions.c \
 	exo-gobject-extensions.c \
+	exo-gtk-extensions.c \
 	exo-job.c \
 	exo-simple-job.c \
 	exo-string.c \
@@ -350,6 +349,27 @@ EXTRA_DIST = 								\
 	exo-icon-view-accessible.c					\
 	exo-marshal.list						\
 	make-exo-alias.pl
+
+if ENABLE_VAPIGEN
+-include $(VAPIGEN_MAKEFILE)
+
+exo-2.vapi: exo-2.gir exo-2.deps
+
+VAPIGEN_VAPIS = exo-2.vapi
+VAPIGEN_GIRDIRS = \
+	$(prefix)/share/gir-1.0 \
+	$(srcdir) \
+	.
+
+exo_2_vapi_METADATADIRS = .
+exo_2_vapi_FILES = exo-2.gir
+#exo_2_vapi_DEPS = exo-2 GObject-2.0 GLib-2.0 Gtk-3.0 libxfce4util-1.0
+
+vapidir = $(datadir)/vala/vapi
+vapi_DATA = $(VAPIGEN_VAPIS) $(VAPIGEN_VAPIS:.vapi=.deps)
+
+EXTRA_DIST += exo-2.metadata exo-2.deps
+endif
 
 if HAVE_GNUC_VISIBILITY
 TESTS =									\
